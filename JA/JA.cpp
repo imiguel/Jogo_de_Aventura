@@ -487,8 +487,8 @@ void graficoMenuIntro(){ //Primeiro Imagem que aparece assim que o jogo inicia
     printf("\n\t\t##   ############################################");
     printf("\n\t\t##   ############################################");
     printf("\n\n\n");
-    system("pause");
-	//carregarTeclaParaContinuar();
+    //system("pause");
+	carregarTeclaParaContinuar();
 }
 
 void graficoMenuMenuPrincipal(){
