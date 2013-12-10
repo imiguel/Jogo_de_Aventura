@@ -764,7 +764,7 @@ int main(int argc, char* argv[])
 		}
 
 		//esconde o tesouro caso o jogador tenha dado 3 passos
-		if (steps == 3){
+		if (steps == 4){
 			mapa->tesouro = 11; //coloca o tesouro oculto (fora do mapa)
 			steps = 0;
 		}else{
