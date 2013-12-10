@@ -210,8 +210,6 @@ Funções "principais" do jogo
 => salvarJogo(): guarda as posicoes e estados das personagens no jogo
 */
 
-
-
 void carregarTeclaParaContinuar(){
 	printf("Carrega ENTER para continuar...");
 	char c = getchar();
@@ -644,6 +642,49 @@ void graficoVerMapaduranteJogo(struct Jogador *jogador){
 	
 }
 
+void graficoMenuHistoriaIntro(struct Jogador *jogador){
+	limparEcra();
+	printf("\n###############################################################################");
+	printf("\n##                              LOST IN PAST                                 ##");
+	printf("\n##                                                                           ##");
+	printf("\n##  %s encontrou uma velha máquina do tempo que julgava não funcionar,", jogador->jogadorNome);
+	printf("\n## pois a mesma se encontrava com muita ferrugem e algo danificada. Daí,     ##");
+	printf("\n## %s pegou em várias ferramentas e passado alguns dias conseguiu", jogador->jogadorNome);
+	printf("\n## colocar a máquina a funcionar.                                            ##");
+	printf("\n##                                                                           ##");
+	printf("\n##  Após a recuperação %s decidiu fazer uma viagem no tempo, para o tempo", jogador->jogadorNome);
+	printf("\n## que o fascinava, tempo esse em que Reinado o Lord Greg, temível Rei e ao  ##");
+	printf("\n## mesmo tempo aventureiro. King Greg era o responsável por várias           ##");
+	printf("\n## conquistas, várias descobertas importantes e responsável pelo maior       ##");
+	printf("\n## império do mundo. %s era um dos seus nobres cavaleiros ao qual foi", jogador->jogadorNome);
+	printf("\n## dada uma importante missão: Capturar um tesouro escondido num castelo     ##"); 
+	printf("\n## que estava guardado por um terrível monstro.                              ##");
+	printf("\n##                                                                           ##");
+	printf("\n###############################################################################");
+	printf("\n\nPág. 1 / 2 \n\n");
+	carregarTeclaParaContinuar();
+}
+
+void graficoMenuHistoriaIntro2(struct Jogador *jogador){
+	limparEcra();
+	printf("\n###############################################################################");
+	printf("\n##                              LOST IN PAST                                 ##");
+	printf("\n##                                                                           ##");
+	printf("\n##  Reza a história que esse castelo era defindido por um terrível monstro   ##");
+	printf("\n## que fazia frente a qualquer pessoa que quisesse apoderar-se do seu        ##");
+	printf("\n## tesouro.                                                                  ##");
+	printf("\n##                                                                           ##");
+	printf("\n##  %s tem a missão de resgastar o tesouro a todo o custo, tendo para isso", jogador->jogadorNome);
+	printf("\n## percorrer as várias salas do castelo à procura do tesouro. Por sua vez    ##");
+	printf("\n## o monstro irá passeando no castelo, na sua ronda diária de defesa do seu  ##");
+	printf("\n## bem precioso.                                                             ##");
+	printf("\n##                                                                           ##");
+	printf("\n## %s estás reparado?? Vamos começar!                               ", jogador->jogadorNome); 
+	printf("\n##                                                                           ##");
+	printf("\n###############################################################################");
+	printf("\n\nPág. 2 / 2 \n\n");
+	carregarTeclaParaContinuar();
+}
 
 
 int main(int argc, char* argv[])
@@ -653,6 +694,7 @@ int main(int argc, char* argv[])
 	struct Celula mapa[SISTEMA_MAPA_MAX_CELULAS];
 	char movimento[5];
 	int movimentarTesouro = 10;
+	int steps = 0; //conta o numero de passos do jogador para esconder o tesouro
 	setlocale(LC_ALL, "Portuguese");
 
 	graficoMenuIntro();
@@ -670,6 +712,8 @@ int main(int argc, char* argv[])
 		if( (argc == 2) && (strcmp(argv[1],"su") == 0) ){
 			jogador.jogadorEnergia = JOGADOR_ENERGIA_SU_MODE;
 		}
+		graficoMenuHistoriaIntro(&jogador);
+		graficoMenuHistoriaIntro2(&jogador);
 	}
 
 	if ( strcmp(movimento, "2") == 0 ){ //carregar jogo
@@ -718,6 +762,15 @@ int main(int argc, char* argv[])
 		if ( strcmp( movimento, "9" ) == 0  ){
 			break; //termina o jogo e mostra a mensagem com info sobre o autor, disciplina, etc
 		}
+
+		//esconde o tesouro caso o jogador tenha dado 3 passos
+		if (steps == 3){
+			mapa->tesouro = 11; //coloca o tesouro oculto (fora do mapa)
+			steps = 0;
+		}else{
+			mapa->tesouro = 10; //coloca novamente o tesouro no mapa
+		}
+		steps++;
 
 		//verifica se o jogador encontrou o tesouro
 		if( jogador.jogadorPosicao == movimentarTesouro ){
