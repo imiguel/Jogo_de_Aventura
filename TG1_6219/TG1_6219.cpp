@@ -49,7 +49,11 @@ struct Adversario{
 
 
 /*
-Inicialização do Jogador e Adversário
+Inicialização das estruturas
+=> LimparEcra(): Função para limpar o ecra que substitui o "system("pause");
+=> iniciarJogador(): Inicializa a estrutura do jogador, recolhendo o nome e dá a energia à personagem
+=> iniciarAdversario(): Inicializa a estrutura do adversário, colocando-o numa sala e dá a energia ao mesmo
+=> iniciarMapa(): Inicializa a estrutura do mapa (mapa definido à mão)
 */
 void limparEcra(){
 	HANDLE hStdout = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -68,13 +72,11 @@ void limparEcra(){
 		strConsoleInfo.dwSize.X * strConsoleInfo.dwSize.Y, Home, &hWrittenChars );
 	
 	SetConsoleCursorPosition( hStdout, Home );
-
-
 }
 
 void iniciarJogador(struct Jogador *jogador){
-        //system("cls");
 		limparEcra();
+
         printf("\n\t\t/\\ /\\ /\\");
         printf("\n\t\t## ## ##");
         printf("\n\t\t########");
@@ -95,7 +97,7 @@ void iniciarJogador(struct Jogador *jogador){
         scanf("%s", jogador->jogadorNome);
         jogador -> jogadorEnergia = JOGADOR_ENERGIA;
         jogador -> jogadorPosicao = JOGADOR_POSICAO_INICIAL;
-        //system("cls");
+
 		limparEcra();
 }
 
@@ -123,77 +125,77 @@ void iniciarMapa(struct Celula mapa[]){
 	mapa[0].este = 1;
 	mapa[0].oeste = -1;
 	mapa[0].tesouro = 0;
-	strcpy(mapa[0].descricao, "Sala 0");
+	strcpy(mapa[0].descricao, "Entras-te no Castelo. O hall é amplo, há muito pó, vestigios de pegadas de outros exploradores. Há duas portas por abrir.");
 
 	mapa[1].norte = -1;
 	mapa[1].sul = -1;
 	mapa[1].este = 2;
 	mapa[1].oeste = 0;
 	mapa[1].tesouro = 0;
-	strcpy(mapa[1].descricao, "Sala 1");
+	strcpy(mapa[1].descricao, "Escolheste a porta à direita e entras-te na Biblioteca. Há muito pó, e bastantes teias de aranha. O ar está "pesado" e sombrio.");
 
 	mapa[2].norte = -1;
 	mapa[2].sul = 5;
 	mapa[2].este = -1;
 	mapa[2].oeste = 1;
 	mapa[2].tesouro = 0;
-	strcpy(mapa[2].descricao, "Sala 2");
+	strcpy(mapa[2].descricao, "Local menos próprio de todo o castelo... Por incrivel que pareça, estás no WC! Vontade para uma pausa?");
 
 	mapa[3].norte = -1;
 	mapa[3].sul = 10;
 	mapa[3].este = -1;
 	mapa[3].oeste = 5;
 	mapa[3].tesouro = 0;
-	strcpy(mapa[3].descricao, "Sala 3");
+	strcpy(mapa[3].descricao, "Esta é a cozinha do castelo. É aqui que se costumavam fazer os grandes banquetes para a familia do Lord Greg.");
 
 	mapa[4].norte = 0;
 	mapa[4].sul = 6;
 	mapa[4].este = 5;
 	mapa[4].oeste = -1;
 	mapa[4].tesouro = 0;
-	strcpy(mapa[4].descricao, "Sala 4");
+	strcpy(mapa[4].descricao, "Pequenina sala de espera. Embora o local seja apertado, é bastante acolhedor, com bastante luz natural.");
 
 	mapa[5].norte = 2;
 	mapa[5].sul = 8;
 	mapa[5].este = 3;
 	mapa[5].oeste = 4;
 	mapa[5].tesouro = 0;
-	strcpy(mapa[5].descricao, "Sala 5");
+	strcpy(mapa[5].descricao, "Enorme salão. Aqui certamente se faziam as festas da família... Mas ao ver tudo arrumado deduz-se que raramente era utilizado!");
 
 	mapa[6].norte = 4;
 	mapa[6].sul = -1;
 	mapa[6].este = 7;
 	mapa[6].oeste = -1;
 	mapa[6].tesouro = 0;
-	strcpy(mapa[6].descricao, "Sala 6");
+	strcpy(mapa[6].descricao, "Sala de canto era uma sala proibida... Lorg Greg usava-a como desculpa de estar amaldiçoada para poder dar algum espaço ao seu feiticeiro para trabalhar.");
 
 	mapa[7].norte = -1;
 	mapa[7].sul = -1;
 	mapa[7].este = 8;
 	mapa[7].oeste = 6;
 	mapa[7].tesouro = 0;
-	strcpy(mapa[7].descricao, "Sala 7");
+	strcpy(mapa[7].descricao, "Pequeno terraço, pois a unica coisa que resta é uma estreita passagem junto à muralha do castelo...");
 
 	mapa[8].norte = 5;
 	mapa[8].sul = -1;
 	mapa[8].este = 9;
 	mapa[8].oeste = 7;
 	mapa[8].tesouro = 0;
-	strcpy(mapa[8].descricao, "Sala 8");
+	strcpy(mapa[8].descricao, "Quarto dos filhos de Lorg Greg. Tal como o quarto do Lord Greg, este tambem estava muito danificado... Luta ou apenas a passagem do tempo?");
 
 	mapa[9].norte = -1;
 	mapa[9].sul = -1;
 	mapa[9].este = -1;
 	mapa[9].oeste = 8;
 	mapa[9].tesouro = 0;
-	strcpy(mapa[9].descricao, "Sala 9");
+	strcpy(mapa[9].descricao, "Quarto do Lorg Greg. Soalho arrancado, janelas partidas... Acho que alguem andou aqui à luta... Ou seria o Log Greg a defender-se do monstro?");
 
 	mapa[10].norte = 3;
 	mapa[10].sul = -1;
 	mapa[10].este = -1;
 	mapa[10].oeste = -1;
 	mapa[10].tesouro = 1;
-	strcpy(mapa[10].descricao, "Sala 10");
+	strcpy(mapa[10].descricao, "Chegas-te a uma sala fechada e sem luz. Jogas-te a mão ao bolso e tiras-te um isqueiro para poderes ter alguma luz.");
 }
 
 
@@ -224,7 +226,6 @@ void combatePersonagens(struct Jogador *jogador, struct Adversario *adversario){
 	int magia = 15;
 
 	if( jogador->jogadorPosicao == adversario->adversarioPosicao ){
-		//system("cls");
 		limparEcra();
 		printf("\nEncontras-te o monstro!! Prepara-te para a luta!\n\nEscolhe a arma:");
 		printf("\n1. Faca\n2. Pedra\n3. Magia");
@@ -238,20 +239,17 @@ void combatePersonagens(struct Jogador *jogador, struct Adversario *adversario){
 			if( adversarioDefendeOuAtaca == 0 ){
 				adversario->adversarioEnergia -= faca;
 				printf("\n\nConseguis-te acertar no adversário! O adversário perdeu %d pontos de energia e fugiu.\n\n\n\n", faca);
-				//system("pause");
 				carregarTeclaParaContinuar();
 			}
 			//Ponto 2: o adversario acerta no jogador
 			if( adversarioDefendeOuAtaca == 1 ){
 				jogador->jogadorEnergia -= faca;
 				printf("\n\nO adversário defendeu-se e atacou logo em seguida. Não conseguis-te defender,\npor isso sofres-te %d pontos de energia.\n\n\n\n", faca);
-				//system("pause");
 				carregarTeclaParaContinuar();
 			}
 			//Ponto 3: o adversario e o jogador falham os ataques
 			if( adversarioDefendeOuAtaca == 2 ){
 				printf("\n\nO adversário conseguiu defender o teu ataque, mas fugiu. Vamos continuar!\n\n\n\n");
-				//system("pause");
 				carregarTeclaParaContinuar();
 			}
 		}
@@ -263,20 +261,17 @@ void combatePersonagens(struct Jogador *jogador, struct Adversario *adversario){
 			if( adversarioDefendeOuAtaca == 0 ){
 				adversario->adversarioEnergia -= pedra;
 				printf("\n\nConseguis-te acertar no adversário! O adversário perdeu %d pontos de energia e fugiu.\n\n\n\n", pedra);
-				//system("pause");
 				carregarTeclaParaContinuar();
 			}
 			//Ponto 2: o adversario acerta no jogador
 			if( adversarioDefendeOuAtaca == 1 ){
 				jogador->jogadorEnergia -= pedra;
 				printf("\n\nO adversário defendeu-se e atacou logo em seguida. Não conseguis-te defender,\npor isso sofres-te %d pontos de energia.\n\n\n\n", pedra);
-				//system("pause");
 				carregarTeclaParaContinuar();
 			}
 			//Ponto 3: o adversario e o jogador falham os ataques
 			if( adversarioDefendeOuAtaca == 2 ){
 				printf("\n\nO adversário conseguiu defender o teu ataque, mas fugiu. Vamos continuar!\n\n\n\n");
-				//system("pause");
 				carregarTeclaParaContinuar();
 			}
 		}
@@ -288,20 +283,17 @@ void combatePersonagens(struct Jogador *jogador, struct Adversario *adversario){
 			if( adversarioDefendeOuAtaca == 0 ){
 				adversario->adversarioEnergia -= magia;
 				printf("\n\nConseguis-te acertar no adversário! O adversário perdeu %d pontos de energia e fugiu.\n\n\n\n", magia);
-				//system("pause");
 				carregarTeclaParaContinuar();
 			}
 			//Ponto 2: o adversario acerta no jogador
 			if( adversarioDefendeOuAtaca == 1 ){
 				jogador->jogadorEnergia -= magia;
 				printf("\n\nO adversário defendeu-se e atacou logo em seguida. Não conseguis-te defender,\npor isso sofres-te %d pontos de energia.\n\n\n\n", magia);
-				//system("pause");
 				carregarTeclaParaContinuar();
 			}
 			//Ponto 3: o adversario e o jogador falham os ataques
 			if( adversarioDefendeOuAtaca == 2 ){
 				printf("\n\nO adversário conseguiu defender o teu ataque, mas fugiu. Vamos continuar!\n\n\n\n");
-				//system("pause");
 				carregarTeclaParaContinuar();
 			}
 		}
@@ -313,7 +305,6 @@ void combatePersonagens(struct Jogador *jogador, struct Adversario *adversario){
 
 void verificaFimJogo(struct Jogador *jogador, struct Adversario *adversario){
 	if( adversario->adversarioEnergia <= 0 ){
-		//system("cls");
 		limparEcra();
 		printf("\n\t\t/\\ /\\ /\\");
         printf("\n\t\t## ## ##");
@@ -338,7 +329,6 @@ void verificaFimJogo(struct Jogador *jogador, struct Adversario *adversario){
     }
 
 	if( jogador->jogadorEnergia <= 0 ){
-		//system("cls");
 		limparEcra();
 		printf("\n\t\t/\\ /\\ /\\");
         printf("\n\t\t## ## ##");
@@ -358,7 +348,6 @@ void verificaFimJogo(struct Jogador *jogador, struct Adversario *adversario){
         printf("\n\n");
         printf("%s o monstro venceu-te! Descansa e tenta mais tarde...", jogador->jogadorNome);
         printf("\n\n\n");
-        //system("pause");
 		carregarTeclaParaContinuar();
     }
 }
@@ -491,28 +480,15 @@ As funções abaixo realizam o aspeto grafico do jogo
 */
 void graficoJogoCorrenteBanner(struct Jogador *jogador, struct Adversario *adversario){
 	//Banner que aparece durante o jogo a informar os dados do jogador
-	//system("cls");
 	limparEcra();
-	/*printf("\n\t\t/\\ /\\ /\\");
-    printf("\n\t\t## ## ##");
-    printf("\n\t\t########");
-    printf("\n\t\t### ####");
-    printf("\n\t\t########   /\\    /\\    /\\    /\\    /\\    /\\    /\\");
-    printf("\n\t\t########   ##    ##    ##    ##    ##    ##    ##");
-    printf("\n\t\t#################################################");
-	printf("\n\t\t########     Nome: %s                ##########", jogador->jogadorNome);
-	printf("\n\t\t##  ####  Energia: %d                ############", jogador->jogadorEnergia);
-	printf("\n###############################################################################\n");*/
-	//printf("\n\t\t##  Nome: %s  |  Energia: %d\n" , jogador->jogadorNome, jogador->jogadorEnergia);
-	//printf( "  Energia: %d  | Energia (Adversário): %d \n" , jogador->jogadorEnergia, adversario->adversarioEnergia);
-	//printf("Posicao jogador %d = adversario %d = tesouro = 10\n", jogador->jogadorPosicao, adversario->adversarioPosicao);
-	printf("\n\t\t Nome: %s  |  Energia: %d  |  adversario (posicao): %d\n" , jogador->jogadorNome, jogador->jogadorEnergia, adversario->adversarioPosicao);
+
+	printf("\n\t\t##  Nome: %s  |  Energia: %d\n" , jogador->jogadorNome, jogador->jogadorEnergia);
 	printf( "-------------------------------------------------------------------------------\n\n" );
 }
 
 void graficoMenuIntro(){ //Primeiro Imagem que aparece assim que o jogo inicia
-    //system("cls");
 	limparEcra();
+
     printf("\n\t\t/\\ /\\ /\\");
     printf("\n\t\t## ## ##");
     printf("\n\t\t########");
@@ -528,13 +504,14 @@ void graficoMenuIntro(){ //Primeiro Imagem que aparece assim que o jogo inicia
     printf("\n\t\t##   ############################################");
     printf("\n\t\t##   ############################################");
     printf("\n\n\n");
-    //system("pause");
+
 	carregarTeclaParaContinuar();
 }
 
 void graficoMenuMenuPrincipal(){
 	//MENU Principal do jogo
-    system("cls");
+    limparEcra();
+
     printf("\n/\\ /\\ /\\");
     printf("\n## ## ##");
     printf("\n########");
@@ -557,34 +534,34 @@ void graficoMenuMenuPrincipal(){
 }
 
 void graficoJogoTesouroEncontrado(){
-		//system("cls");
 	limparEcra();
-		printf("\n\t\t/\\ /\\ /\\");
-        printf("\n\t\t## ## ##");
-        printf("\n\t\t########");
-        printf("\n\t\t### ####");
-        printf("\n\t\t### ####");
-        printf("\n\t\t########   /\\    /\\    /\\    /\\    /\\    /\\    /\\");
-        printf("\n\t\t########   ##    ##    ##    ##    ##    ##    ##");
-        printf("\n\t\t#################################################");
-        printf("\n\t\t#################################################");
-        printf("\n\t\t##################                  #############");
-        printf("\n\t\t################## JOGO DE AVENTURA #############");
-        printf("\n\t\t### ##############                  #############");
-        printf("\n\t\t##   ############################################");
-        printf("\n##################   ##########################################################");
-        printf("\n###############################################################################");
-        printf("\n\n");
-        printf("Parabéns conseguis-te encontrar o tesouro!.");
-        printf("\n\n\n");
-        //system("pause");
-		carregarTeclaParaContinuar();
+
+	printf("\n\t\t/\\ /\\ /\\");
+    printf("\n\t\t## ## ##");
+    printf("\n\t\t########");
+    printf("\n\t\t### ####");
+    printf("\n\t\t### ####");
+    printf("\n\t\t########   /\\    /\\    /\\    /\\    /\\    /\\    /\\");
+    printf("\n\t\t########   ##    ##    ##    ##    ##    ##    ##");
+    printf("\n\t\t#################################################");
+    printf("\n\t\t#################################################");
+    printf("\n\t\t##################                  #############");
+    printf("\n\t\t################## JOGO DE AVENTURA #############");
+    printf("\n\t\t### ##############                  #############");
+    printf("\n\t\t##   ############################################");
+    printf("\n##################   ##########################################################");
+    printf("\n###############################################################################");
+    printf("\n\n");
+    printf("Parabéns conseguis-te encontrar o tesouro!!");
+    printf("\n\n\n");
+   
+	carregarTeclaParaContinuar();
 }
 
 void graficoMenuCreditosFinais(){
 	//MENU que aparece no final do jogo
-    //system("cls");
 	limparEcra();
+
     printf("\t\n\n\n/\\ /\\ /\\");
     printf("\t\n## ## ##");
     printf("\t\n########");
@@ -600,7 +577,7 @@ void graficoMenuCreditosFinais(){
     printf("\t\n##################   Desenvolvido por:                  ###########");
     printf("\t\n##################     Miguel Rosa, 6219                ###########");
     printf("\t\n##################     Disciplina: Sistemas Operativos  ###########");
-    printf("\t\n### ##############     ESTiG, Novembro 2013             ###########");
+    printf("\t\n### ##############     ESTiG, Dezembro 2013             ###########");
     printf("\t\n##   #############                                      ###########");
     printf("\t\n##   ##############################################################");
     printf("\n\n\n");
@@ -608,7 +585,7 @@ void graficoMenuCreditosFinais(){
 
 void graficoVerMapaduranteJogo(struct Jogador *jogador){
 	//menu que mostra o desenho do mapa durante o jogo
-	//system("cls");
+	
 	limparEcra();
 	/*				MAPA	
 	 _____________________________________________
@@ -638,12 +615,13 @@ void graficoVerMapaduranteJogo(struct Jogador *jogador){
 	printf("|   6    |     7    |   8      |   9    |     |\n");
 	printf("|                                       |  10 |\n");
 	printf("|________|__________|__________|________|_____|\n\n\n");
+
 	printf("%s estás na sala %d\n\n\n\n", jogador->jogadorNome, jogador->jogadorPosicao);
-	
 }
 
 void graficoMenuHistoriaIntro(struct Jogador *jogador){
 	limparEcra();
+	
 	printf("\n###############################################################################");
 	printf("\n##                              LOST IN PAST                                 ##");
 	printf("\n##                                                                           ##");
@@ -653,8 +631,8 @@ void graficoMenuHistoriaIntro(struct Jogador *jogador){
 	printf("\n## colocar a máquina a funcionar.                                            ##");
 	printf("\n##                                                                           ##");
 	printf("\n##  Após a recuperação %s decidiu fazer uma viagem no tempo, para o tempo", jogador->jogadorNome);
-	printf("\n## que o fascinava, tempo esse em que Reinado o Lord Greg, temível Rei e ao  ##");
-	printf("\n## mesmo tempo aventureiro. King Greg era o responsável por várias           ##");
+	printf("\n## que o fascinava, tempo esse em que reinava o Lord Greg, temível Rei e ao  ##");
+	printf("\n## mesmo tempo aventureiro. Lord Greg era o responsável por várias           ##");
 	printf("\n## conquistas, várias descobertas importantes e responsável pelo maior       ##");
 	printf("\n## império do mundo. %s era um dos seus nobres cavaleiros ao qual foi", jogador->jogadorNome);
 	printf("\n## dada uma importante missão: Capturar um tesouro escondido num castelo     ##"); 
@@ -662,11 +640,13 @@ void graficoMenuHistoriaIntro(struct Jogador *jogador){
 	printf("\n##                                                                           ##");
 	printf("\n###############################################################################");
 	printf("\n\nPág. 1 / 2 \n\n");
+	
 	carregarTeclaParaContinuar();
 }
 
 void graficoMenuHistoriaIntro2(struct Jogador *jogador){
 	limparEcra();
+	
 	printf("\n###############################################################################");
 	printf("\n##                              LOST IN PAST                                 ##");
 	printf("\n##                                                                           ##");
@@ -679,10 +659,11 @@ void graficoMenuHistoriaIntro2(struct Jogador *jogador){
 	printf("\n## o monstro irá passeando no castelo, na sua ronda diária de defesa do seu  ##");
 	printf("\n## bem precioso.                                                             ##");
 	printf("\n##                                                                           ##");
-	printf("\n## %s estás reparado?? Vamos começar!                               ", jogador->jogadorNome); 
+	printf("\n## %s estás preparado?? Vamos começar!                               ", jogador->jogadorNome); 
 	printf("\n##                                                                           ##");
 	printf("\n###############################################################################");
 	printf("\n\nPág. 2 / 2 \n\n");
+	
 	carregarTeclaParaContinuar();
 }
 
