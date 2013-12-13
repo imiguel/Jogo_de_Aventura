@@ -570,6 +570,8 @@ void graficoJogoTesouroEncontrado(){
 
 void graficoMenuCreditosFinais(){
 	//MENU que aparece no final do jogo
+	HANDLE hConsole=GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN | FOREGROUND_INTENSITY);
 	limparEcra();
 
     printf("\t\n\n\n/\\ /\\ /\\");
