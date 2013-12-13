@@ -18,6 +18,7 @@
 #define ADVERSARIO_ENERGIA 100				//definicoes do adversario
 #define ADVERSARIO_POSICAO_INICIAL 10
 #define EMPTY _T( ' ' )
+#define sndPlaySoundW    //=> permite ler ficheiros de audio
 
 
 /*
@@ -203,6 +204,7 @@ void iniciarMapa(struct Celula mapa[]){
 /*
 Funções "principais" do jogo
 => carregarTeclaParaContinuar(): função para continuar o jogo após carregar no ENTER (alternativa ao uso do system("pause"); )
+=> tocarSomCapturaTesouro(): Toca uma musica quando o jogador captura o tesouro
 => combatePersonagens(): função que simula o combate das personagens, escolhendo aleatoriamente o resultado final do combate independentemente da arma seleccionada
 => verificaFimJogo(): faz a verificação da energia das personagens. A que chegar primeiro a zero (0) perde
 => movimentarAdversario(): criar o movimento do adversario ao longo do mapa
@@ -216,6 +218,12 @@ void carregarTeclaParaContinuar(){
 	printf("Carrega ENTER para continuar...");
 	char c = getchar();
 	c = getchar();
+}
+
+void tocarSomCapturaTesouro(){
+	char* somCapturado = "..\\data\\somTesouroCapturado.wav";
+	sndPlaySound(somCapturado, SND_ASYNC);  
+	Beep(523,250);
 }
 
 void combatePersonagens(struct Jogador *jogador, struct Adversario *adversario){
@@ -303,7 +311,7 @@ void combatePersonagens(struct Jogador *jogador, struct Adversario *adversario){
 
 }
 
-void verificaFimJogo(struct Jogador *jogador, struct Adversario *adversario){
+void verificaFimJogoBatalha(struct Jogador *jogador, struct Adversario *adversario){
 	if( adversario->adversarioEnergia <= 0 ){
 		limparEcra();
 		printf("\n\t\t/\\ /\\ /\\");
@@ -466,6 +474,8 @@ int carregarJogoBin(struct Jogador *jogador, struct Adversario *adversario)
   fclose(f);
   return 0;
 }
+
+
 
 
 
@@ -686,6 +696,7 @@ int main(int argc, char* argv[])
 	scanf("%s", movimento);
 
 	if ( strcmp(movimento, "1") == 0 ){ //novo jogo
+		Beep(523,250);
 		iniciarJogador(&jogador);
 		iniciarAdversario(&adversario);
 		
@@ -712,7 +723,7 @@ int main(int argc, char* argv[])
 		printf( "\n%s" , mapa[jogador.jogadorPosicao].descricao);
 		printf( "\n\nPara onde queres ir?\n1. Norte\n2. Sul\n3. Este\n4. Oeste\n5. Ver Mapa\n\n8. Guardar Jogo\n9. Sair do jogo\n\nQual é a opção: ");
 		scanf( "%s" , movimento);
-		//Beep(523,500);
+		
 
 		//movimento do jogador
 		if ( ( strcmp( movimento, "1" ) == 0 ) && ( mapa[jogador.jogadorPosicao].norte != -1 )  ){
@@ -729,16 +740,13 @@ int main(int argc, char* argv[])
 		}
 		if ( strcmp( movimento, "5" ) == 0  ){
 			graficoVerMapaduranteJogo(&jogador);
-			//system("pause");
 			carregarTeclaParaContinuar();
 		}
 		if ( strcmp( movimento, "8" ) == 0  ){
-			//system("cls");
 			limparEcra();
 			printf("Jogo Guardado...\n\n");
 			salvarJogoTXT(&jogador, &adversario);
 			salvarJogoBIN(&jogador, &adversario);
-			//system("pause");
 			carregarTeclaParaContinuar();
 		}
 		if ( strcmp( movimento, "9" ) == 0  ){
@@ -756,6 +764,7 @@ int main(int argc, char* argv[])
 
 		//verifica se o jogador encontrou o tesouro
 		if( jogador.jogadorPosicao == movimentarTesouro ){
+			tocarSomCapturaTesouro();
 			graficoJogoTesouroEncontrado();
 			break;
 		}
@@ -765,13 +774,12 @@ int main(int argc, char* argv[])
 			movimentarAdversario(&adversario);
 
 		combatePersonagens(&jogador, &adversario);
-		verificaFimJogo(&jogador, &adversario);
-		//system( "cls" );
+		verificaFimJogoBatalha(&jogador, &adversario);
 		limparEcra();
 	}
 
 	graficoMenuCreditosFinais();
-	//system("pause");
 	carregarTeclaParaContinuar();
+	
 	return 0;
 }
