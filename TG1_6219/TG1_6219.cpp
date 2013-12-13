@@ -132,7 +132,7 @@ void iniciarMapa(struct Celula mapa[]){
 	mapa[1].este = 2;
 	mapa[1].oeste = 0;
 	mapa[1].tesouro = 0;
-	strcpy(mapa[1].descricao, "Escolheste a porta à direita e entras-te na Biblioteca. Há muito pó, e bastantes teias de aranha. O ar está "pesado" e sombrio.");
+	strcpy(mapa[1].descricao, "Escolheste a porta à direita e entras-te na Biblioteca. Há muito pó, e bastantes teias de aranha. O ar está ""pesado"" e sombrio.");
 
 	mapa[2].norte = -1;
 	mapa[2].sul = 5;
@@ -482,7 +482,7 @@ void graficoJogoCorrenteBanner(struct Jogador *jogador, struct Adversario *adver
 	//Banner que aparece durante o jogo a informar os dados do jogador
 	limparEcra();
 
-	printf("\n\t\t##  Nome: %s  |  Energia: %d\n" , jogador->jogadorNome, jogador->jogadorEnergia);
+	printf("\n\tNome: %s  |  Energia: %d\n" , jogador->jogadorNome, jogador->jogadorEnergia);
 	printf( "-------------------------------------------------------------------------------\n\n" );
 }
 
@@ -712,6 +712,7 @@ int main(int argc, char* argv[])
 		printf( "\n%s" , mapa[jogador.jogadorPosicao].descricao);
 		printf( "\n\nPara onde queres ir?\n1. Norte\n2. Sul\n3. Este\n4. Oeste\n5. Ver Mapa\n\n8. Guardar Jogo\n9. Sair do jogo\n\nQual é a opção: ");
 		scanf( "%s" , movimento);
+		//Beep(523,500);
 
 		//movimento do jogador
 		if ( ( strcmp( movimento, "1" ) == 0 ) && ( mapa[jogador.jogadorPosicao].norte != -1 )  ){
