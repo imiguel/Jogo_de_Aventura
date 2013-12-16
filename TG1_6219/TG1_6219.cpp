@@ -330,6 +330,8 @@ void verificaFimJogoBatalha(struct Jogador *jogador, struct Adversario *adversar
         printf("\n##################   ##########################################################");
         printf("\n###############################################################################");
         printf("\n\n");
+		HANDLE hConsole=GetStdHandle(STD_OUTPUT_HANDLE);
+		SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN | FOREGROUND_INTENSITY);
         printf("Parabéns %s vences-te o adversário, no entanto esqueces-te do tesouro.\nTenta novamente.", jogador->jogadorNome);
         printf("\n\n\n");
         //system("pause");
@@ -354,6 +356,8 @@ void verificaFimJogoBatalha(struct Jogador *jogador, struct Adversario *adversar
         printf("\n##################   ##########################################################");
         printf("\n###############################################################################");
         printf("\n\n");
+		HANDLE hConsole=GetStdHandle(STD_OUTPUT_HANDLE);
+		SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_INTENSITY);
         printf("%s o monstro venceu-te! Descansa e tenta mais tarde...", jogador->jogadorNome);
         printf("\n\n\n");
 		carregarTeclaParaContinuar();
