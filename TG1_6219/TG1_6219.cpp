@@ -246,17 +246,20 @@ void combatePersonagens(struct Jogador *jogador, struct Adversario *adversario){
 			//Ponto 1: o jogador acerta no adversario
 			if( adversarioDefendeOuAtaca == 0 ){
 				adversario->adversarioEnergia -= faca;
+				Beep(523,250);
 				printf("\n\nConseguis-te acertar no adversário! O adversário perdeu %d pontos de energia e fugiu.\n\n\n\n", faca);
 				carregarTeclaParaContinuar();
 			}
 			//Ponto 2: o adversario acerta no jogador
 			if( adversarioDefendeOuAtaca == 1 ){
 				jogador->jogadorEnergia -= faca;
+				Beep(523,250);
 				printf("\n\nO adversário defendeu-se e atacou logo em seguida. Não conseguis-te defender,\npor isso sofres-te %d pontos de energia.\n\n\n\n", faca);
 				carregarTeclaParaContinuar();
 			}
 			//Ponto 3: o adversario e o jogador falham os ataques
 			if( adversarioDefendeOuAtaca == 2 ){
+				Beep(523,250);
 				printf("\n\nO adversário conseguiu defender o teu ataque, mas fugiu. Vamos continuar!\n\n\n\n");
 				carregarTeclaParaContinuar();
 			}
@@ -268,17 +271,20 @@ void combatePersonagens(struct Jogador *jogador, struct Adversario *adversario){
 			//Ponto 1: o jogador acerta no adversario
 			if( adversarioDefendeOuAtaca == 0 ){
 				adversario->adversarioEnergia -= pedra;
+				Beep(523,250);
 				printf("\n\nConseguis-te acertar no adversário! O adversário perdeu %d pontos de energia e fugiu.\n\n\n\n", pedra);
 				carregarTeclaParaContinuar();
 			}
 			//Ponto 2: o adversario acerta no jogador
 			if( adversarioDefendeOuAtaca == 1 ){
 				jogador->jogadorEnergia -= pedra;
+				Beep(523,250);
 				printf("\n\nO adversário defendeu-se e atacou logo em seguida. Não conseguis-te defender,\npor isso sofres-te %d pontos de energia.\n\n\n\n", pedra);
 				carregarTeclaParaContinuar();
 			}
 			//Ponto 3: o adversario e o jogador falham os ataques
 			if( adversarioDefendeOuAtaca == 2 ){
+				Beep(523,250);
 				printf("\n\nO adversário conseguiu defender o teu ataque, mas fugiu. Vamos continuar!\n\n\n\n");
 				carregarTeclaParaContinuar();
 			}
@@ -290,17 +296,20 @@ void combatePersonagens(struct Jogador *jogador, struct Adversario *adversario){
 			//Ponto 1: o jogador acerta no adversario
 			if( adversarioDefendeOuAtaca == 0 ){
 				adversario->adversarioEnergia -= magia;
+				Beep(523,250);
 				printf("\n\nConseguis-te acertar no adversário! O adversário perdeu %d pontos de energia e fugiu.\n\n\n\n", magia);
 				carregarTeclaParaContinuar();
 			}
 			//Ponto 2: o adversario acerta no jogador
 			if( adversarioDefendeOuAtaca == 1 ){
 				jogador->jogadorEnergia -= magia;
+				Beep(523,250);
 				printf("\n\nO adversário defendeu-se e atacou logo em seguida. Não conseguis-te defender,\npor isso sofres-te %d pontos de energia.\n\n\n\n", magia);
 				carregarTeclaParaContinuar();
 			}
 			//Ponto 3: o adversario e o jogador falham os ataques
 			if( adversarioDefendeOuAtaca == 2 ){
+				Beep(523,250);
 				printf("\n\nO adversário conseguiu defender o teu ataque, mas fugiu. Vamos continuar!\n\n\n\n");
 				carregarTeclaParaContinuar();
 			}
