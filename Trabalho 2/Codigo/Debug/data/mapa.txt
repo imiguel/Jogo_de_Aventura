@@ -1,0 +1,76 @@
+-1
+4
+1
+-1
+0
+Entras-te no Castelo. O hall é amplo, há muito pó, vestigios de pegadas de outros exploradores. Há duas portas por abrir.
+
+-1
+-1
+2
+0
+0
+Escolheste a porta à direita e entras-te na Biblioteca. Há muito pó, e bastantes teias de aranha. O ar está "pesado" e sombrio.
+
+-1
+5
+-1
+1
+0
+Local menos próprio de todo o castelo... Por incrivel que pareça, estás no WC! Vontade para uma pausa?
+
+-1
+10
+-1
+5
+0
+Esta é a cozinha do castelo. É aqui que se costumavam fazer os grandes banquetes para a familia do Lord Greg.
+
+0
+6
+5
+-1
+0
+Pequenina sala de espera. Embora o local seja apertado, é bastante acolhedor, com bastante luz natural.
+
+2
+8
+3
+4
+0
+Enorme salão. Aqui certamente se faziam as festas da família... Mas ao ver tudo arrumado deduz-se que raramente era utilizado!
+
+4
+-1
+7
+-1
+0
+Sala de canto era uma sala proibida... Lord Greg usava-a como desculpa de estar amaldiçoada para poder dar algum espaço ao seu feiticeiro para trabalhar.
+
+-1
+-1
+8
+6
+0
+Pequeno terraço, pois a unica coisa que resta é uma estreita passagem junto à muralha do castelo...
+
+5
+-1
+9
+7
+0
+Quarto dos filhos de Lorg Greg. Tal como o quarto do Lord Greg, este tambem estava muito danificado... Luta ou apenas a passagem do tempo?
+
+-1
+-1
+-1
+8
+0
+Quarto do Lorg Greg. Soalho arrancado, janelas partidas... Acho que alguem andou aqui à luta... Ou seria o Log Greg a defender-se do monstro?
+
+3
+-1
+-1
+-1
+1
+Chegas-te a uma sala fechada e sem luz. Jogas-te a mão ao bolso e tiras-te um isqueiro para poderes ter alguma luz. 
